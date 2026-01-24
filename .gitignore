@@ -1,0 +1,117 @@
+# Large model weights
+models/*.pkl
+Models/*.pkl
+
+# Datasets and generated artefacts
+datasets/
+Datasets/
+data/
+*.pt
+*.pth
+
+# Python env / caches
+venv/
+.venv/
+__pycache__/
+.ipynb_checkpoints/
+.DS_Store
+
+# Ignore datasets
+datasets/
+*.zip
+
+# Ignore dataset folders
+lfw-deepfunneled/
+img_align_celeba/
+*.zip
+
+# Ignore any Kaggle API keys
+.kaggle/
+
+# Ignore Python cache and logs
+__pycache__/
+*.pyc
+*.pyo
+*.log
+
+# Ignore virtual environments
+venv/
+env/
+
+# Ignore Jupyter Notebook checkpoints
+.ipynb_checkpoints/
+
+# Ignore system files
+.DS_Store
+
+# Ignore datasets
+datasets/
+Datasets/
+*.zip
+
+# Ignore dataset folders
+lfw-deepfunneled/
+img_align_celeba/
+*.zip
+
+# Ignore any Kaggle API keys
+.kaggle/
+
+# Ignore Python cache and logs
+__pycache__/
+*.pyc
+*.pyo
+*.log
+
+# Ignore virtual environments
+venv/
+env/
+
+# Ignore Jupyter Notebook checkpoints
+.ipynb_checkpoints/
+
+# Ignore system files
+.DS_Store
+
+# Ignore trained models
+models/*.pt
+
+stylegan2-ada-pytorch/
+
+# Model weights
+*.pkl
+*.pt
+*.pth
+
+# StyleGAN
+stylegan2-*
+models/
+Models/
+
+# Large generated data
+outputs/
+results/
+
+# Python
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+
+# Models / weights
+*.pkl
+*.pt
+*.pth
+*.ckpt
+*.onnx
+
+# Datasets
+data/
+datasets/
+
+# StyleGAN / large repos
+stylegan2-ada-pytorch/
+models/
+
+# OS
+.DS_Store
+
