@@ -1,0 +1,32 @@
+## Draft 4, Latent-Space Attack Setup and Compute Constraints
+
+Date: 2026-01-21
+Author: Stella Williams
+
+Summary
+
+This session began the transition from pixel-space adversarial attacks against FaceNet embeddings to latent-space experimentation using a generative model. The aim of this phase is to evaluate whether identity manipulation becomes more feasible when the adversary optimises in latent space, rather than applying small pixel perturbations, and to document the practical constraints involved in making such experiments reproducible under limited compute.
+
+What was implemented
+
+A latent-space experiment pipeline was introduced, where a pretrained face embedding model (FaceNet) is used as the verification backend, while a pretrained generator (StyleGAN2-ADA weights) is used to produce candidate faces. The intended workflow is to optimise latent vectors to shift the generated face embedding toward a selected target embedding, while applying constraints to preserve visual plausibility. This aligns the experimental objective with the authentication mechanism, since the system’s decision logic is based on embedding similarity rather than class labels.
+
+Primary technical issue encountered
+
+The main bottleneck was the inversion step, where a latent vector is optimised to reconstruct a real source image. Optimisation-based inversion is computationally expensive, particularly on CPU, and it introduces long runtimes that prevent iterative experimentation. Additionally, the generator’s mapping output shape differed from earlier assumptions, which required correcting tensor handling to align with StyleGAN2-ADA’s native latent format.
+
+What this may indicate about the threat model
+
+The inversion bottleneck highlights an important distinction between theoretical and practical adversarial capability. If an attack requires high-cost optimisation to reconstruct a specific real person’s face before identity manipulation can occur, it may be less representative of low-resource adversaries. However, this does not eliminate latent-space risk, since many latent-space attacks do not require inversion of a real face. Instead, an attacker can generate plausible synthetic faces and optimise them directly to match a target identity’s embedding, which may be more feasible than reconstructing a precise source image.
+
+What stronger hardware would change
+
+On GPU hardware, latent optimisation and inversion become materially more feasible, allowing more steps, higher resolution, and improved realism constraints. Higher compute would support more robust benchmarking, including multiple source-target pairs, stronger optimisation schedules, and optional perceptual losses. The expected consequence is higher success rates for targeted impersonation and clearer visual evidence, particularly when optimisation is conducted in W+ space or when higher-fidelity reconstruction constraints are added.
+
+Reproducibility trade-offs
+
+Reducing compute cost requires methodological simplification. The most reproducible low-resource approach is to avoid optimisation-based inversion and instead use latent-space attacks that start from a fixed random latent. This sacrifices direct “source likeness” to a real person, but maintains a realistic impersonation threat model against embedding-based verification. Documenting step count, learning rate, latent representation choice, and preprocessing decisions preserves reproducibility even when experiments are constrained.
+
+Next experimental actions
+
+The next step is to implement latent optimisation without inversion, using a targeted identity objective in embedding space and a lightweight regulariser that anchors the generated image to its initial appearance. Once basic targeted success is measured, a single lightweight defence step, such as JPEG compression, will be applied to assess whether preprocessing mitigates latent-space identity manipulation under a fixed authentication threshold.

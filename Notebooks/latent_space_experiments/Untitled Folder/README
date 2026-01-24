@@ -1,0 +1,20 @@
+## Latent-Space Impersonation (Iteration 2 - CPU-Constrained)
+
+This experiment represents the second iteration of latent-space adversarial
+impersonation against embedding-based face authentication systems.
+
+Earlier attempts explored optimisation-based inversion of real face images into
+StyleGAN latent space. While effective in principle, inversion proved prohibitively
+computationally expensive on CPU-only hardware and limited experimental iteration.
+
+This iteration therefore adopts a more realistic and resource-aware threat model:
+latent optimisation without inversion. Rather than reconstructing a real source
+face, the attack begins from a randomly sampled latent vector and optimises it
+directly to impersonate a target identity in embedding space.
+
+This design choice reflects a plausible attacker scenario where photorealistic
+synthetic faces are generated and optimised to pass embedding-based verification,
+without requiring access to the original victim’s biometric data.
+
+All decisions prioritise reproducibility, transparency, and alignment with
+real-world deployment constraints.

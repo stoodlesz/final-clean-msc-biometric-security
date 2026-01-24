@@ -1,0 +1,58 @@
+## 2025-11-10 – Draft 4: Targeted Impersonation Attack on FaceNet
+
+### Objective
+Following the limited success of the earlier FGSM and PGD implementations (Drafts 2–3), this draft focused on restructuring the adversarial attack logic to more accurately reflect **real-world biometric impersonation** scenarios.
+
+The previous drafts successfully generated perturbations but failed to significantly alter model embeddings — cosine similarities between clean and adversarial images remained high, indicating that the attacks did not effectively fool the model. Draft 4 introduces a **targeted PGD impersonation attack**, where the source image is optimised to mimic another person’s facial embedding rather than merely disrupt its own.
+
+---
+
+### Key Changes
+1. **Reframed Attack Objective**  
+   - Previous PGD and FGSM methods reduced similarity to the source identity (“self-break”).  
+   - Draft 4 introduces a **targeted loss function**, guiding the adversarial image to increase similarity with a *target identity’s embedding* (simulating impersonation).  
+   - The `CosineEmbeddingLoss` is used with a positive target label (`+1.0`) between the adversarial embedding and the target embedding.
+
+2. **Dataset Handling**  
+   - Two distinct identities are selected from the LFW subset (source and target).  
+   - The source is perturbed to resemble the target.
+
+3. **Evaluation Metrics**  
+   - **Original vs Target Similarity:** Baseline cosine similarity between unrelated faces (should be low).  
+   - **Adversarial vs Target Similarity:** Similarity after perturbation (should increase).  
+   - Success occurs when the adversarial image crosses a verification threshold (e.g. cosine > 0.8).
+
+4. **Verification Context**  
+   - The experiment now mirrors how **face verification systems** operate — using embedding similarity rather than class prediction.  
+   - This allows for alignment with standard biometric security evaluation metrics (False Acceptance Rate, False Rejection Rate).
+
+---
+
+### Preliminary Findings
+- **Original vs Target Similarity:** Typically low (≈0.2–0.4).  
+- **Adversarial vs Target Similarity:** Increased in several trials (≈0.6–0.8), indicating partial impersonation success.  
+- The model remains relatively robust at smaller perturbation strengths (ε ≤ 0.1), but similarity increases more significantly as ε grows.
+
+This demonstrates that **FaceNet can be gradually fooled** under targeted gradient-based optimisation, though complete impersonation remains challenging without higher perturbation or iterative fine-tuning.
+
+---
+
+### Next Steps
+1. **Refine the impersonation benchmark loop**  
+   - Measure impersonation success rates across multiple identities and perturbation strengths.  
+   - Log average cosine similarity improvement and false acceptance rate (FAR).
+
+2. **Integrate verification thresholding logic**  
+   - Define a cosine similarity cutoff for “same person” verification (e.g. >0.8).  
+   - Compute FAR and FRR for clean and adversarial inputs.
+
+3. **Visual and Quantitative Analysis**  
+   - Plot similarity distributions for clean, adversarial, and defended embeddings.  
+   - Reintroduce JPEG and Gaussian defences to test recovery under impersonation context.
+
+---
+
+### Reflection
+This iteration marks a pivotal shift from conceptual attacks to **functionally realistic adversarial testing** in biometric security.  
+By reframing the problem as a verification breach rather than generic misclassification, the project now directly addresses **trust, robustness, and SME applicability** in facial authentication systems.  
+The work from this draft will serve as the foundation for empirical analysis in the next evaluation sprint.

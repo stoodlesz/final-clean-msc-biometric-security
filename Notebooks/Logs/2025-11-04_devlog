@@ -1,0 +1,125 @@
+## Draft 2 – PGD Implementation, Defence Comparison, and Evaluation Refinement
+**Date**: 2025-11-04  
+**Author**: Stella Williams
+
+### Goals
+This draft focused on extending the adversarial testing pipeline beyond FGSM by:
+- Implementing PGD attacks with tunable steps
+- Adding JPEG and Gaussian blur as lightweight defence strategies
+- Evaluating similarity via cosine scores using the FaceNet model on a 5-class LFW sample
+
+---
+
+### Key Developments
+
+#### Attack & Defence Functions:
+- Implemented PGD with customisable `epsilon`, `alpha`, and `steps`
+- Defined JPEG compression and Gaussian blur as preprocessing defences
+- All attacks evaluated on cosine similarity change
+
+#### Testing Process:
+- Ran PGD on random LFW samples
+- Measured similarity between clean and attacked embeddings
+- Applied JPEG and blur to adversarial samples
+- Logged how many times each defence recovered original similarity
+
+---
+
+### Observations & Inconsistencies
+
+- PGD *appeared* ineffective: cosine similarity remained at 1.0 even after 40 PGD steps and `ε = 0.3`
+- However, defence recoveries (e.g. JPEG: 0.80) suggested something had changed in the image
+- This contradiction revealed a **measurement flaw**: the model wasn’t truly fooled, just slightly perturbed
+
+---
+
+### Metric Issue Identified
+
+- Original success threshold of `cosine < 0.8` was too aggressive
+- Minor embedding changes still yield cosine scores ~0.99, but are significant in biometric matching
+- Conclusion: **redefine "attack success" as `cosine < 0.99`**, and test both:
+  - Self-divergence: “Does the model stop recognising me?”
+  - Impersonation: “Does it wrongly think I’m someone else?”
+
+---
+
+### Planned Improvements for Draft 3
+
+#### 1. **Dual Evaluation Modes**:
+- **Mode A – Self Degradation Test**:  
+  - Check whether PGD makes the image different enough from itself to fall below a 0.99 similarity threshold
+- **Mode B – Impersonation Attack**:  
+  - Check whether PGD makes the image similar to someone else in the dataset (cosine > 0.9 with a wrong identity)
+
+#### 2. **New Success Metrics**:
+| Metric              | Condition               | Interpretation                |
+|---------------------|--------------------------|--------------------------------|
+| Attack Success (A)  | `cosine(orig, adv) < 0.99` | Original identity disrupted    |
+| Attack Success (B)  | `cosine(adv, target) > 0.9`| Fooled model into wrong match |
+| Recovery Success    | `cosine(orig, defence) > 0.90` | Defence restored identity   |
+
+#### 3. **Updated PGD Configuration**:
+- `epsilon = 0.4`  
+- `alpha = 0.02`  
+- `steps = 60`  
+
+These stronger parameters will be used to ensure meaningful attack pressure.
+
+---
+
+### Conclusion
+
+Draft 2 highlighted critical evaluation issues and led to a redefinition of success metrics. Although PGD was implemented correctly, poor thresholding meant it was falsely judged ineffective. The next phase will test both identity degradation and impersonation risk in a more realistic threat model.
+
+> Moving forward, Draft 3 will combine the two evaluation approaches in a side-by-side benchmark with clearer indicators of biometric failure.
+
+
+
+## Draft 3 Development Log – Improving Attack Validity
+**Date:** 2025‑11‑04  
+**Author:** Stella Williams
+
+### Summary
+Draft‑3 focused on correcting two issues discovered in Draft‑2:
+1) PGD was technically implemented but not **evaluated properly**.
+2) The attack goal was unclear (destroy recognition vs impersonate another user).
+
+### What Changed
+| Draft | Description |
+|---|---|
+| **Draft‑2** | FGSM + basic PGD were tested, JPEG/blur added, but model never "broke" |
+| **Draft‑3** | Introduced *meaningful attack metrics* + stronger PGD + dual attack goals |
+
+### Why I Updated the Approach
+The model output cosine similarity values extremely close to 1.0.  
+Using a threshold of 0.8 meant attacks “failed” even when they subtly changed identity vector.
+
+Real facial authentication systems trigger on **tiny embedding shifts**.  
+Thus, a realistic success threshold is:
+
+- Attack success = **cosine < 0.99**
+- Impersonation success = **cosine > 0.90**
+
+### New Improvements
+- PGD strengthened (`eps=0.4`, `steps=60`)
+- Two attack modes added:
+  - **Self‑break test:** Does system stop recognising the correct user?
+  - **Imposter attack:** Can attacker shift image toward another identity?
+
+This aligns with **real biometric security requirements** and SME constraints.
+
+### Key Learning
+> “Adversarial evaluation is not just about perturbing images — it’s about simulating how real attackers behave and how authentication rules fail.”
+
+Draft‑3 now provides realistic adversarial failure cases and measurable defence baselines.
+
+### Charts
+
+Here is the chart visualising the difference between self-break success and impersonation success across varying PGD attack strengths (epsilon):
+(see matplotlib-figure1 plot in the parent folder)
+
+### Interpretation
+
+Self-Break Rate: Shows how well the PGD attack disrupts the model’s ability to recognise an original image as itself. At ε = 0.4, we reach a 93% break rate - a strong indicator that the model is highly vulnerable to these perturbations.
+
+Impersonation Rate: Measures how often the attacked image is successfully misidentified as someone else. This rises more gradually, suggesting that impersonation is harder, but becomes feasible (>50%) beyond ε = 0.3.
