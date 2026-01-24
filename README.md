@@ -28,6 +28,13 @@ source venv/bin/activate  # or `source venv/bin/activate.fish` depending on shel
 ```
 pip install -r requirements.txt
 ```
+## External dependencies
+
+This project uses StyleGAN2-ADA for latent-space experiments.
+
+Clone separately:
+git clone https://github.com/NVlabs/stylegan2-ada-pytorch
+
 
 ## Running a Sample Notebook
 
