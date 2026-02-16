@@ -1,9 +1,9 @@
 ## 2025-11-10 – Draft 4: Targeted Impersonation Attack on FaceNet
 
 ### Objective
-Following the limited success of the earlier FGSM and PGD implementations (Drafts 2–3), this draft focused on restructuring the adversarial attack logic to more accurately reflect **real-world biometric impersonation** scenarios.
+Following the limited success of the earlier FGSM and PGD implementations (Drafts 2–3), this draft focused on restructuring the adversarial attack logic to reflect **real-world biometric impersonation** scenarios more accurately.
 
-The previous drafts successfully generated perturbations but failed to significantly alter model embeddings — cosine similarities between clean and adversarial images remained high, indicating that the attacks did not effectively fool the model. Draft 4 introduces a **targeted PGD impersonation attack**, where the source image is optimised to mimic another person’s facial embedding rather than merely disrupt its own.
+Earlier non-targeted and low-budget attacks produced limited embedding shift, whereas targeted impersonation objectives produced larger similarity changes, although these were not always visually plausible, indicating that the attacks did not effectively fool the model. Draft 4 introduces a **targeted PGD impersonation attack**, where the source image is optimised to mimic another person’s facial embedding rather than merely disrupt its own.
 
 ---
 
