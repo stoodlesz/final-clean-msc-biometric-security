@@ -14,3 +14,9 @@ Reduced-compute latent impersonation batch
 --------------------------------------------------
 
 === Run 1/5 ===
+Run 1 | Step 0 | cos_target=-0.0156 | cos_non_target=0.1060
+Run 1 | Step 10 | cos_target=0.7614 | cos_non_target=0.0849
+Run 1 COMPLETE | Success=True | Steps=15 | Final_target=0.8527 | Final_non_target=0.0180 | Runtime_sec=6895.30
+
+=== Run 2/5 ===
+Run 2 | Step 0 | cos_target=-0.0156 | cos_non_target=0.1060
