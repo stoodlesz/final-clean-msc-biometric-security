@@ -20,3 +20,69 @@ Run 1 COMPLETE | Success=True | Steps=15 | Final_target=0.8527 | Final_non_targe
 
 === Run 2/5 ===
 Run 2 | Step 0 | cos_target=-0.0156 | cos_non_target=0.1060
+Run 2 | Step 10 | cos_target=0.7614 | cos_non_target=0.0849
+Run 2 COMPLETE | Success=True | Steps=15 | Final_target=0.8527 | Final_non_target=0.0180 | Runtime_sec=6071.98
+
+=== Run 3/5 ===
+Run 3 | Step 0 | cos_target=-0.0156 | cos_non_target=0.1060
+Run 3 | Step 10 | cos_target=0.7614 | cos_non_target=0.0849
+Run 3 COMPLETE | Success=True | Steps=15 | Final_target=0.8527 | Final_non_target=0.0180 | Runtime_sec=5995.07
+
+=== Run 4/5 ===
+Run 4 | Step 0 | cos_target=-0.0156 | cos_non_target=0.1060
+Run 4 | Step 10 | cos_target=0.7614 | cos_non_target=0.0849
+Run 4 COMPLETE | Success=True | Steps=15 | Final_target=0.8527 | Final_non_target=0.0180 | Runtime_sec=6028.34
+
+=== Run 5/5 ===
+Run 5 | Step 0 | cos_target=-0.0156 | cos_non_target=0.1060
+Run 5 | Step 10 | cos_target=0.7614 | cos_non_target=0.0849
+Run 5 COMPLETE | Success=True | Steps=15 | Final_target=0.8527 | Final_non_target=0.0180 | Runtime_sec=6042.67
+--------------------------------------------------
+Experiment started: 2026-02-17 18:23:03.535330
+Reduced-compute latent impersonation batch
+--------------------------------------------------
+--------------------------------------------------
+Experiment started: 2026-02-17 18:24:09.901284
+Reduced-compute latent impersonation batch
+--------------------------------------------------
+--------------------------------------------------
+Experiment started: 2026-02-17 18:24:43.456274
+Reduced-compute latent impersonation batch
+--------------------------------------------------
+
+=== Run 1/1 ===
+Run 1 | Step 0 | cos_target=-0.0156 | cos_non_target=0.1060
+Run 1 COMPLETE | Success=False | Steps=4 | Final_target=0.6891 | Final_non_target=-0.0786 | Runtime_sec=1915.50
+--------------------------------------------------
+Experiment started: 2026-02-17 22:12:44.896148
+Reduced-compute latent impersonation batch
+--------------------------------------------------
+
+=== Run 1/1 ===
+Run 1 | Step 0 | cos_target=-0.0156 | cos_non_target=0.1060
+Run 1 COMPLETE | Success=False | Steps=2 | Final_target=0.4825 | Final_non_target=-0.0769 | Runtime_sec=1175.57
+--------------------------------------------------
+Experiment started: 2026-02-17 22:42:02.423930
+Reduced-compute latent impersonation batch
+--------------------------------------------------
+
+=== Run 1/5 ===
+Run 1 | Step 0 | cos_target=-0.0156 | cos_non_target=0.1060
+Run 1 | Step 10 | cos_target=0.7614 | cos_non_target=0.0849
+
+=== Run 2/5 ===
+Run 2 | Step 0 | cos_target=-0.0156 | cos_non_target=0.1060
+Run 2 | Step 10 | cos_target=0.7614 | cos_non_target=0.0849
+
+=== Run 3/5 ===
+Run 3 | Step 0 | cos_target=-0.0156 | cos_non_target=0.1060
+Run 3 | Step 10 | cos_target=0.7614 | cos_non_target=0.0849
+
+=== Run 4/5 ===
+Run 4 | Step 0 | cos_target=-0.0156 | cos_non_target=0.1060
+Run 4 | Step 10 | cos_target=0.7614 | cos_non_target=0.0849
+
+=== Run 5/5 ===
+Run 5 | Step 0 | cos_target=-0.0156 | cos_non_target=0.1060
+Run 5 | Step 10 | cos_target=0.7614 | cos_non_target=0.0849
+Run 5 COMPLETE | Success=True | Steps=15 | Final_target=0.8527 | Final_non_target=0.0180 | Runtime_sec=6214.38
