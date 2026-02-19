@@ -32,3 +32,16 @@
 [2026-02-19 05:25:37] Run 5 | Step 0 | cos_target=0.3125 | cos_non_target=-0.2477
 [2026-02-19 06:26:05] Run 5 | Step 10 | cos_target=0.8485 | cos_non_target=-0.0829
 [2026-02-19 06:32:06] Run 5 COMPLETE | Success=True | Steps=12 | Final_target=0.8619 | Final_non_target=-0.0828 | Runtime_sec=4351.22
+
+
+==============================
+Batch Summary
+==============================
+Total runs completed: 5
+Success rate: 100.0%
+Mean steps (successful only): 17.40
+Mean final cosine (target): 0.8626
+Mean cosine (non-target): -0.1121
+Mean runtime: 105.97 minutes
+
+
