@@ -2,3 +2,33 @@
 [2026-02-18 21:19:16] Experiment started: 2026-02-18 21:19:16.677555
 [2026-02-18 21:19:16] Reduced-compute latent impersonation batch
 [2026-02-18 21:19:16] --------------------------------------------------
+[2026-02-18 21:38:58] --------------------------------------------------
+[2026-02-18 21:38:58] Multi-run 80-step max latent impersonation test version 2
+[2026-02-18 21:38:58] --------------------------------------------------
+[2026-02-18 21:42:16] 
+=== Run 1/5 ===
+[2026-02-18 21:49:15] Run 1 | Step 0 | cos_target=-0.0902 | cos_non_target=0.1679
+[2026-02-18 22:51:04] Run 1 | Step 10 | cos_target=0.6569 | cos_non_target=-0.1122
+[2026-02-18 23:51:52] Run 1 | Step 20 | cos_target=0.7978 | cos_non_target=-0.1612
+[2026-02-19 00:28:24] Run 1 COMPLETE | Success=True | Steps=27 | Final_target=0.8623 | Final_non_target=-0.1923 | Runtime_sec=9968.03
+[2026-02-19 00:28:24] 
+=== Run 2/5 ===
+[2026-02-19 00:34:28] Run 2 | Step 0 | cos_target=0.1665 | cos_non_target=-0.1398
+[2026-02-19 01:35:49] Run 2 | Step 10 | cos_target=0.8226 | cos_non_target=-0.0370
+[2026-02-19 02:00:03] Run 2 COMPLETE | Success=True | Steps=15 | Final_target=0.8625 | Final_non_target=-0.1119 | Runtime_sec=5498.81
+[2026-02-19 02:00:03] 
+=== Run 3/5 ===
+[2026-02-19 02:06:04] Run 3 | Step 0 | cos_target=0.1056 | cos_non_target=0.2319
+[2026-02-19 03:06:35] Run 3 | Step 10 | cos_target=0.7151 | cos_non_target=0.0300
+[2026-02-19 04:07:06] Run 3 | Step 20 | cos_target=0.8637 | cos_non_target=-0.0786
+[2026-02-19 04:07:06] Run 3 COMPLETE | Success=True | Steps=21 | Final_target=0.8637 | Final_non_target=-0.0786 | Runtime_sec=7622.61
+[2026-02-19 04:07:06] 
+=== Run 4/5 ===
+[2026-02-19 04:13:08] Run 4 | Step 0 | cos_target=0.0600 | cos_non_target=-0.0147
+[2026-02-19 05:13:31] Run 4 | Step 10 | cos_target=0.8444 | cos_non_target=-0.0746
+[2026-02-19 05:19:35] Run 4 COMPLETE | Success=True | Steps=12 | Final_target=0.8625 | Final_non_target=-0.0949 | Runtime_sec=4348.83
+[2026-02-19 05:19:35] 
+=== Run 5/5 ===
+[2026-02-19 05:25:37] Run 5 | Step 0 | cos_target=0.3125 | cos_non_target=-0.2477
+[2026-02-19 06:26:05] Run 5 | Step 10 | cos_target=0.8485 | cos_non_target=-0.0829
+[2026-02-19 06:32:06] Run 5 COMPLETE | Success=True | Steps=12 | Final_target=0.8619 | Final_non_target=-0.0828 | Runtime_sec=4351.22
