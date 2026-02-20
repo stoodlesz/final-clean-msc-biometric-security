@@ -168,6 +168,7 @@ Recommended starting points:
 - `Notebooks/MainProject_Baseline-Copy1_chap7.ipynb`
 - `Notebooks/latent_space_experiments/1_latent_impersonation_stylegan.ipynb    # inversion included experiment`
 - `Notebooks/latent_space_experiments/4_latent_impersonation_stylegan-refactor_NO_INVERSION_MULTIRUN.ipynb`
+- `Notebooks/latent_space_experiments/secure_latent_test.py.ipynb`
 
 ---
 
