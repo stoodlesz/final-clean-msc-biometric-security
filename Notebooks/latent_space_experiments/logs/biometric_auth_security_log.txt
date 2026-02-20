@@ -1,0 +1,47 @@
+2026-02-20 20:49:00,395 | INFO | --------------------------------------------------
+2026-02-20 20:49:00,397 | INFO | Secure Latent Impersonation Defensive Test Started
+2026-02-20 20:49:00,397 | INFO | --------------------------------------------------
+2026-02-20 20:50:19,620 | INFO | --------------------------------------------------
+2026-02-20 20:50:19,621 | INFO | Secure Latent Impersonation Defensive Test Started
+2026-02-20 20:50:19,621 | INFO | --------------------------------------------------
+2026-02-20 20:50:20,722 | INFO | Target embedding loaded.
+2026-02-20 20:51:19,303 | INFO | --------------------------------------------------
+2026-02-20 20:51:19,304 | INFO | Secure Latent Impersonation Defensive Test Started
+2026-02-20 20:51:19,304 | INFO | --------------------------------------------------
+2026-02-20 20:51:20,155 | INFO | Target embedding loaded.
+2026-02-20 20:51:48,653 | INFO | --------------------------------------------------
+2026-02-20 20:51:48,654 | INFO | Secure Latent Impersonation Defensive Test Started
+2026-02-20 20:51:48,654 | INFO | --------------------------------------------------
+2026-02-20 20:51:49,483 | INFO | Target embedding loaded.
+2026-02-20 20:52:43,215 | INFO | --------------------------------------------------
+2026-02-20 20:52:43,216 | INFO | Secure Latent Impersonation Defensive Test Started
+2026-02-20 20:52:43,216 | INFO | --------------------------------------------------
+2026-02-20 20:52:44,086 | INFO | Target embedding loaded.
+2026-02-20 20:53:48,120 | INFO | Starting reduced latent impersonation attack (fast mode)
+2026-02-20 20:58:40,083 | INFO | --------------------------------------------------
+2026-02-20 20:58:40,083 | INFO | Secure Latent Impersonation Defensive Test Started
+2026-02-20 20:58:40,083 | INFO | --------------------------------------------------
+2026-02-20 21:00:35,936 | INFO | --------------------------------------------------
+2026-02-20 21:00:35,936 | INFO | Secure Latent Impersonation Defensive Test Started
+2026-02-20 21:00:35,937 | INFO | --------------------------------------------------
+2026-02-20 21:00:37,040 | INFO | Target embedding loaded.
+2026-02-20 21:00:37,050 | INFO | Starting reduced latent impersonation attack (fast mode)
+2026-02-20 21:03:50,060 | ERROR | Fatal error occurred: element 0 of tensors does not require grad and does not have a grad_fn
+2026-02-20 21:07:51,705 | INFO | --------------------------------------------------
+2026-02-20 21:07:51,706 | INFO | Secure Latent Impersonation Defensive Test Started
+2026-02-20 21:07:51,706 | INFO | --------------------------------------------------
+2026-02-20 21:08:41,381 | INFO | --------------------------------------------------
+2026-02-20 21:08:41,382 | INFO | Secure Latent Impersonation Defensive Test Started
+2026-02-20 21:08:41,383 | INFO | --------------------------------------------------
+2026-02-20 21:08:42,280 | INFO | Target embedding loaded.
+2026-02-20 21:10:01,379 | INFO | --------------------------------------------------
+2026-02-20 21:10:01,380 | INFO | Secure Latent Impersonation Defensive Test Started
+2026-02-20 21:10:01,380 | INFO | --------------------------------------------------
+2026-02-20 21:10:02,309 | INFO | Target embedding loaded.
+2026-02-20 21:12:21,321 | INFO | Starting reduced latent impersonation attack (fast mode)
+2026-02-20 21:15:11,200 | INFO | --------------------------------------------------
+2026-02-20 21:15:11,201 | INFO | Secure Latent Impersonation Defensive Test Started
+2026-02-20 21:15:11,202 | INFO | --------------------------------------------------
+2026-02-20 21:15:14,016 | INFO | Target embedding loaded.
+2026-02-20 21:15:14,027 | INFO | Starting reduced latent impersonation attack (fast mode)
+2026-02-20 21:21:45,178 | INFO | Attack Step 0 | Cosine_target=-0.0902
