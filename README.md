@@ -70,7 +70,7 @@ msc-biometric-security-clean/
 ## Clone the Repository
 
 ```bash
-git clone https://gitlab.com/stooflesz/final-clean-msc-biometric-security.git
+git clone https://gitlab.com/stoodlesz/final-clean-msc-biometric-security.git
 cd msc-biometric-security-clean
 ```
 
