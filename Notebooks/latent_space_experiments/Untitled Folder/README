@@ -1,20 +1,283 @@
-## Latent-Space Impersonation (Iteration 2 - CPU-Constrained)
+# Adversarial Attacks on AI-Based Biometric Authentication Systems  
+MSc Dissertation Project – Stella Williams  
 
-This experiment represents the second iteration of latent-space adversarial
-impersonation against embedding-based face authentication systems.
+---
 
-Earlier attempts explored optimisation-based inversion of real face images into
-StyleGAN latent space. While effective in principle, inversion proved prohibitively
-computationally expensive on CPU-only hardware and limited experimental iteration.
+## Overview
 
-This iteration therefore adopts a more realistic and resource-aware threat model:
-latent optimisation without inversion. Rather than reconstructing a real source
-face, the attack begins from a randomly sampled latent vector and optimises it
-directly to impersonate a target identity in embedding space.
+This repository contains the experimental implementation supporting the MSc dissertation:
 
-This design choice reflects a plausible attacker scenario where photorealistic
-synthetic faces are generated and optimised to pass embedding-based verification,
-without requiring access to the original victim’s biometric data.
+**“Adversarial Attacks on AI-Based Biometric Authentication Systems”**
 
-All decisions prioritise reproducibility, transparency, and alignment with
-real-world deployment constraints.
+The project investigates adversarial manipulation in embedding-based facial biometric authentication systems (FaceNet-style architectures). The research evaluates authentication-relevant outcomes using cosine similarity thresholds rather than classification error metrics.
+
+Both attack capability and lightweight defensive mitigation are evaluated under constrained computational conditions (CPU-only execution).
+
+---
+
+## Research Objectives
+
+This project examines:
+
+- Gradient-based pixel-space attacks against facial embeddings  
+- Latent-space impersonation using StyleGAN2-ADA  
+- Authentication threshold dynamics and embedding convergence  
+- Lightweight defensive mechanisms suitable for SME deployment  
+- Regulatory and operational implications under UK GDPR and EU AI governance  
+
+The primary evaluation metric is cosine similarity relative to fixed verification thresholds.
+
+---
+
+## Repository Structure
+
+```
+msc-biometric-security-clean/
+│
+├── Datasets/                     # LFW dataset and test identities
+├── Models/                       # Pre-trained StyleGAN2 model (.pkl)
+├── stylegan2-ada-pytorch/        # Official StyleGAN2-ADA implementation
+│
+├── Notebooks/
+│   ├── 1_data_loading_exploration.ipynb
+│   ├── 2_model_training_fgsm_attack.ipynb
+│   ├── 3_defence_methods_analysis.ipynb
+│   ├── MainProject_Baseline-Copy1_chap7.ipynb
+│   ├── 1stdraft_MainProject_Baseline.ipynb
+│   ├── 2nddraft_MainProject_Baseline.ipynb
+│   ├── 3rddraft_MainProject_Baseline.ipynb
+│   ├── 4thdraft_MainProject_Baseline.ipynb
+│   │
+│   ├── latent_space_experiments/
+│   │   ├── 1_latent_impersonation_stylegan.ipynb
+│   │   ├── 1_latent_impersonation_stylegan-refactor_NO_INVERSION.ipynb
+│   │   ├── 2_latent_impersonation_stylegan-refactor_NO_INVERSION_Loop2.ipynb
+│   │   ├── 3_latent_impersonation_stylegan-refactor_NO_INVERSION_SINGLERUN.ipynb
+│   │   ├── 4_latent_impersonation_stylegan-refactor_NO_INVERSION_MULTIRUN.ipynb
+│   │   ├── secure_latent_test.py.ipynb
+│   │   ├── latent_experiment_log.txt
+│   │   ├── latent_experiment_log_180226.txt
+│   │   ├── latent_experiment_log_190226.txt
+│   │   └── logs/
+│   │       └── biometric_auth_security_log.txt
+│   │
+│   └── Logs/                     # Personal experimental logs
+│
+├── Outputs/                      # Generated adversarial images
+├── Reports/                      # Dissertation drafts
+├── LiteratureReview/
+├── ResearchProposal/
+├── Scripts/
+├── requirements.txt
+└── venv/
+```
+
+---
+
+## Attack Implementations
+
+### Pixel-Space Attacks
+
+Pixel-space adversarial attacks are implemented using FGSM and PGD optimised directly against embedding similarity objectives.
+
+Primary implementation:
+```
+Notebooks/MainProject_Baseline-Copy1_chap7.ipynb
+```
+
+These experiments demonstrate:
+
+- Reliable embedding displacement  
+- Limited impersonation success under constrained perturbation budgets  
+- Dependence on threshold calibration  
+
+The findings illustrate the distinction between embedding movement and authentication compromise.
+
+---
+
+## Latent-Space Impersonation
+
+Latent-space optimisation uses StyleGAN2-ADA to generate synthetic faces whose embeddings converge toward a target identity.
+
+Location:
+```
+Notebooks/latent_space_experiments/
+```
+
+Two distinct attack configurations were evaluated.
+
+---
+
+### 1. Inversion-Based Latent Attack
+
+Notebook:
+```
+1_latent_impersonation_stylegan.ipynb
+```
+
+- Performs latent inversion of a source image  
+- Optimises within the inverted latent representation  
+- High computational cost  
+- Achieves near-complete embedding convergence (~0.98 cosine similarity)  
+- Limited repeatability under CPU constraints  
+
+This configuration demonstrates maximal identity convergence under favourable optimisation conditions.
+
+---
+
+### 2. Inversion-Free (Reduced-Compute) Latent Attack
+
+Primary multi-run notebook:
+```
+4_latent_impersonation_stylegan-refactor_NO_INVERSION_MULTIRUN.ipynb
+```
+
+- Random latent initialisation  
+- Direct embedding similarity optimisation  
+- Multi-run batch evaluation  
+- Consistent convergence (~0.86 cosine under CPU-only execution)  
+- Higher repeatability relative to inversion-based approach  
+
+This variant forms the primary feasibility analysis reported in Chapter 7.
+
+---
+
+## Logging Structure
+
+The project maintains three distinct logging layers to separate attack experimentation, defensive validation, and exploratory development.
+
+---
+
+### 1. Latent Impersonation Experiment Logs
+
+Location:
+```
+Notebooks/latent_space_experiments/
+```
+
+Examples:
+```
+latent_experiment_log.txt  
+latent_experiment_log_180226.txt  
+latent_experiment_log_190226.txt
+```
+
+These logs record:
+
+- Step-wise cosine similarity progression  
+- Runtime per optimisation run  
+- Multi-run summaries  
+- Convergence behaviour  
+
+These correspond to attack evaluations described in Chapter 7.
+
+---
+
+### 2. Security Validation Logs
+
+Location:
+```
+Notebooks/latent_space_experiments/logs/
+```
+
+File:
+```
+biometric_auth_security_log.txt
+```
+
+This log captures:
+
+- Secure verification decisions (ACCEPT / REJECT / STEP_UP_REQUIRED / LOCKED)  
+- Detection of monotonic similarity increases  
+- Rate-limiting events  
+- Runtime and error reporting  
+
+These logs support the defensive validation experiments discussed in Chapter 9.
+
+---
+
+### 3. Personal Experimental Notebook Logs
+
+Location:
+```
+Notebooks/Logs/
+```
+
+These logs contain exploratory outputs, intermediate debugging traces, and development-phase experimentation. They are not part of the formal reported results but provide traceability of the iterative research process.
+
+---
+
+## Defensive Validation
+
+A lightweight verification wrapper was implemented to demonstrate mitigation without retraining the embedding model.
+
+The wrapper introduces:
+
+- Two-threshold decision logic  
+- Similarity trajectory monitoring  
+- Attempt throttling  
+- Structured audit logging  
+
+Validation notebook:
+```
+Notebooks/latent_space_experiments/secure_latent_test.py.ipynb
+```
+
+The defensive configuration demonstrates that reduced-compute latent impersonation achieving ~0.86 cosine similarity can trigger step-up verification rather than immediate acceptance.
+
+---
+
+## Environment
+
+Developed on:
+
+- macOS (Apple Silicon)
+- Python 3.10
+- CPU-only experimental execution
+
+Install dependencies:
+
+```bash
+pip install -r requirements.txt
+```
+
+Ensure PyTorch is installed with appropriate backend support (MPS or CUDA if available).
+
+---
+
+## Reproducibility Notes
+
+- Latent-space optimisation is computationally intensive.
+- Reduced-compute variants are provided for feasibility testing.
+- Threshold values (e.g., 0.80–0.90 cosine) reflect authentication-oriented evaluation rather than classification benchmarks.
+- Experiments were intentionally conducted under constrained hardware conditions to analyse feasibility-aware threat modelling.
+
+---
+
+## Academic Context
+
+This repository supports a dissertation analysing:
+
+- Embedding-space geometry and identity convergence  
+- Authentication-relevant adversarial threat models  
+- Feasibility-aware attack modelling  
+- Lightweight mitigation strategies suitable for SMEs  
+- Regulatory implications under UK GDPR and EU AI governance  
+
+The focus is on authentication compromise rather than classification misprediction.
+
+---
+
+## Disclaimer
+
+This project is conducted for academic research and robustness evaluation purposes only.  
+Attack implementations are intended solely for defensive analysis and security evaluation.
+
+---
+
+## Author
+
+Stella Williams  
+MSc Cyber Security  
+University of Essex
+

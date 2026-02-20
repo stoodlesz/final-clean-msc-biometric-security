@@ -45,3 +45,28 @@
 2026-02-20 21:15:14,016 | INFO | Target embedding loaded.
 2026-02-20 21:15:14,027 | INFO | Starting reduced latent impersonation attack (fast mode)
 2026-02-20 21:21:45,178 | INFO | Attack Step 0 | Cosine_target=-0.0902
+2026-02-20 21:28:26,095 | INFO | Attack Step 1 | Cosine_target=0.0685
+2026-02-20 21:34:51,666 | INFO | Attack Step 2 | Cosine_target=0.1825
+2026-02-20 21:41:05,807 | INFO | Attack Step 3 | Cosine_target=0.2554
+2026-02-20 21:47:28,500 | INFO | Attack Step 4 | Cosine_target=0.3109
+2026-02-20 21:54:12,406 | INFO | Attack Step 5 | Cosine_target=0.3689
+2026-02-20 22:00:51,119 | INFO | Attack Step 6 | Cosine_target=0.4566
+2026-02-20 22:07:45,211 | INFO | Attack Step 7 | Cosine_target=0.5472
+2026-02-20 22:07:45,213 | INFO | Attack runtime: 52.52 minutes
+2026-02-20 22:07:45,215 | INFO | Verification attempt | user=attacker | similarity=0.5472
+2026-02-20 22:07:45,215 | INFO | Final decision: REJECT | Final cosine: 0.5472
+2026-02-20 22:07:45,215 | INFO | Verification attempt | user=attacker | similarity=0.5472
+2026-02-20 22:07:45,215 | INFO | Repeated attempt 1 -> REJECT
+2026-02-20 22:07:45,215 | INFO | Verification attempt | user=attacker | similarity=0.5472
+2026-02-20 22:07:45,215 | INFO | Repeated attempt 2 -> REJECT
+2026-02-20 22:07:45,215 | INFO | Verification attempt | user=attacker | similarity=0.5472
+2026-02-20 22:07:45,215 | INFO | Repeated attempt 3 -> REJECT
+2026-02-20 22:07:45,215 | INFO | Verification attempt | user=attacker | similarity=0.5472
+2026-02-20 22:07:45,215 | INFO | Repeated attempt 4 -> REJECT
+2026-02-20 22:07:45,215 | INFO | Verification attempt | user=attacker | similarity=0.5472
+2026-02-20 22:07:45,216 | WARNING | User attacker locked due to excessive attempts
+2026-02-20 22:07:45,216 | INFO | Repeated attempt 5 -> LOCKED
+2026-02-20 22:07:45,216 | INFO | Verification attempt | user=attacker | similarity=0.5472
+2026-02-20 22:07:45,217 | WARNING | User attacker locked due to excessive attempts
+2026-02-20 22:07:45,217 | INFO | Repeated attempt 6 -> LOCKED
+2026-02-20 22:07:45,226 | INFO | Test completed.
