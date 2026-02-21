@@ -38,7 +38,7 @@ echo "All datasets downloaded and extracted."
 # 3. Final structure confirmation
 ##################################
 
-echo -e "\n✅ Dataset folders:"
+echo -e "\n Dataset folders:"
 ls -d */
 
 echo -e "\nDone. You can now use ImageFolder with 'datasets/lfw-deepfunneled' and 'datasets/celeba'."

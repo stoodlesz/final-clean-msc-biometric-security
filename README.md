@@ -61,6 +61,7 @@ msc-biometric-security-clean/
 ├── LiteratureReview/
 ├── ResearchProposal/
 ├── Scripts/
+│   ├── download_datasets.sh
 ├── requirements.txt
 └── README.md
 ```
